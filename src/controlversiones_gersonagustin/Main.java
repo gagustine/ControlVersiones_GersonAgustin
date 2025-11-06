@@ -17,7 +17,7 @@ public class Main {
         do {
             System.out.println("1. Agregar estudiante");
             System.out.println("2. Ver estudiantes");
-            System.out.println("3. Buscar estudiante");  // NUEVA OPCIÓN
+            System.out.println("3. Buscar estudiante"); 
             System.out.println("4. Salir");
             System.out.print("Seleccione una opcion: ");
             
@@ -35,13 +35,13 @@ public class Main {
             buscarEstudiante();
             break;
             case 4:
-            System.out.println("¡Hasta luego!");
+            System.out.println("¡Hasta luego! Gracias por usar el sistema."); //CAMBIO MENSAJE DESPEDIDA
             break;
             default:
-            System.out.println("Opción invalida");
+            System.out.println("Opcion invalida");
 
             }
-        } while(opcion != 4);  // Cambia 3 por 4
+        } while(opcion != 4); 
     }
     
 public static void agregarEstudiante() {
@@ -69,13 +69,15 @@ public static void agregarEstudiante() {
     public static void verEstudiantes() {
         System.out.println("\n=== LISTA DE ESTUDIANTES ===");
         if (estudiantes.isEmpty()) {
-            System.out.println("No hay estudiantes registrados.");
+        System.out.println("No hay estudiantes registrados.");
         } else {
-            for (int i = 0; i < estudiantes.size(); i++) {
-                System.out.println((i + 1) + ". " + estudiantes.get(i));
-            }
+        System.out.println("Lista completa:");
+        for (int i = 0; i < estudiantes.size(); i++) {
+            System.out.println("  " + (i + 1) + ". " + estudiantes.get(i));
         }
+        mostrarEstadisticas();  // LLAMADA A ESTADISTICAS - NUEVO
     }
+}
     
     public static void buscarEstudiante() {
     System.out.print("Ingrese nombre a buscar: ");
@@ -94,6 +96,16 @@ public static void agregarEstudiante() {
     
     if (!encontrado) {
         System.out.println("No se encontraron estudiantes con: '" + nombreBuscado + "'");
+    }
+}
+    public static void mostrarEstadisticas() {
+    System.out.println("\n=== ESTADISTICAS ===");
+    System.out.println("• Total de estudiantes: " + totalEstudiantes);
+    System.out.println("• Capacidad utilizada: " + estudiantes.size() + " registros");
+    
+    if (!estudiantes.isEmpty()) {
+        System.out.println("• Primer estudiante: " + estudiantes.get(0));
+        System.out.println("• Ultimo estudiante: " + estudiantes.get(estudiantes.size() - 1));
     }
 }
 }
